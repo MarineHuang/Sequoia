@@ -26,9 +26,9 @@ def check(code_name, data, end_date=None, threshold=120):
     
     
     # 在最近的3个交易日均线均多头排列
-    if (data.iloc[0]['ma5']  >= data.iloc[0]['ma10']
-        and data.iloc[0]['ma10'] >= data.iloc[0]['ma20']
-        and data.iloc[0]['ma20'] >= data.iloc[0]['ma120']
+    if (data.iloc[-1]['ma5']  >= data.iloc[-1]['ma10']
+        and data.iloc[-1]['ma10'] >= data.iloc[-1]['ma20']
+        and data.iloc[-1]['ma20'] >= data.iloc[-1]['ma120']
         #and data.iloc[1]['ma5']  >= data.iloc[1]['ma10']
         #and data.iloc[1]['ma10'] >= data.iloc[1]['ma20']
         #and data.iloc[1]['ma20'] >= data.iloc[1]['ma120']

@@ -42,13 +42,14 @@ def prepare():
     if datetime.datetime.now().weekday() == 0:
         strategies['均线多头'] = keep_increasing.check
 
-    strategies_result = process(stocks, strategies)
+    strategies_result, stocks_data = process(stocks, strategies)
 
     set1= strategies_result['放量上涨'].intersection(strategies_result['均线多头'])
     logging.info(f"放量上涨 & 均线多头: \n {set1}")
     set2= strategies_result['突破平台'].intersection(strategies_result['均线多头'])
     logging.info(f"突破平台 & 均线多头: \n {set2}")
 
+    #import pdb; pdb.set_trace()
     logging.info("************************ process   end ***************************************")
 
 def process(stocks, strategies):
@@ -59,7 +60,8 @@ def process(stocks, strategies):
         strategies_result[strategy] = results
         time.sleep(2)
 
-    return strategies_result
+    #import pdb; pdb.set_trace()
+    return strategies_result, stocks_data
 
 def check(stocks_data, strategy, strategy_func):
     end = settings.config['end_date']
